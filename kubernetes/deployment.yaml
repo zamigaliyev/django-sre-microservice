@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-microservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: django-microservice
+  template:
+    metadata:
+      labels:
+        app: django-microservice
+    spec:
+      containers:
+      - name: django-microservice
+        image: ghcr.io/zamigtech/django-microservice:latest
+        ports:
+        - containerPort: 8000
